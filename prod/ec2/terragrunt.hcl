@@ -1,4 +1,7 @@
 
+include {
+  path = find_in_parent_folders()
+}
 
 terraform {
   # Deploy version v0.0.1 in prod
