@@ -11,11 +11,11 @@ pipeline {
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         checkout scm // Checkout the source code
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+               sh "git clone https://github.com/kundathilnithi/tform-infra-live.git"
+            }
+        }
 
         stage('Initialize') {
             steps {
