@@ -4,7 +4,7 @@ import com.awsec2.TerragruntPipeline
 
 
 pipeline {
-    agent 'kubeagent'
+    agent ('kubeagent')
 
     parameters {
         string(name: 'TERRAGRUNT_CONFIG', defaultValue: 'path/to/terragrunt.hcl', description: 'Path to the Terragrunt configuration file')
