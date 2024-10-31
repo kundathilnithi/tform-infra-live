@@ -35,7 +35,7 @@ pipeline {
                     sh "pwd"
                     sh "cd ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}"
                     sh"pwd"
-                    sh "terragrunt init"
+                    sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}"
                     sh "pwd"
                 
                   
