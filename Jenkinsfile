@@ -1,5 +1,5 @@
 pipeline {
-    agent { label kubeagent}
+    agent { label 'kubeagent'}
 
     environment {
         TERRAGRUNT_WORKING_DIR = 'tform-infra-live' // Update with the path to your Terragrunt directory
