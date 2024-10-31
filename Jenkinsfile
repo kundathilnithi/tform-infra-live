@@ -30,19 +30,19 @@ pipeline {
             }
         }
 
-        stage('Approval') {
-            steps {
-                input message: "Approve to apply the Terragrunt plan?", ok: "Apply"
-            }
-        }
+        // stage('Approval') {
+        //     steps {
+        //         input message: "Approve to apply the Terragrunt plan?", ok: "Apply"
+        //     }
+        // }
 
-        stage('Terragrunt Apply') {
-            steps {
-                dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'terragrunt apply planfile.tfplan'
-                }
-            }
-        }
+        // stage('Terragrunt Apply') {
+        //     steps {
+        //         dir(TERRAGRUNT_WORKING_DIR) {
+        //             sh 'terragrunt apply planfile.tfplan'
+        //         }
+        //     }
+        // }
     }
 
     post {
@@ -50,4 +50,3 @@ pipeline {
             cleanWs()  // Cleans the workspace after completion
         }
     }
-}
