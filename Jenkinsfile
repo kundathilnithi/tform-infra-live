@@ -6,11 +6,11 @@ pipeline {
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //        sh "git clone https://github.com/kundathilnithi/tform-infra-live.git "
-        //        sh 'pwd'
-        //     }
+        stage('Checkout') {
+            steps {
+               sh "git clone https://github.com/kundathilnithi/tform-infra-live.git "
+               sh 'pwd'
+            }
         }
 
         stage('Terragrunt Init') {
