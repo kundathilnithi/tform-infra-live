@@ -6,8 +6,8 @@
 pipeline {
     agent { label 'kubeagent'}
 
-     environment {
-        TERRAGRUNT_WORKING_DIR = '/home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live'  // Change this to your directory path
+     
+        TERRAGRUNT_WORKING_DIR = 'myec2-pipeline'  // Change this to your directory path
     }
 
    stages {
@@ -21,7 +21,8 @@ pipeline {
 
         stage('Terragrunt Init') {
             steps {
-                dir(TERRAGRUNT_WORKING_DIR) {
+              //  dir(TERRAGRUNT_WORKING_DIR) 
+                {
                     sh 'terragrunt init'
                 }
             }
