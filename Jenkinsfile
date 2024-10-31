@@ -17,7 +17,7 @@ pipeline {
             }
         }
 
-   }
+   
 
         stage('Terragrunt Init') {
             steps {
@@ -55,6 +55,7 @@ pipeline {
     //         cleanWs()  // Cleans the workspace after completion
     //     }
     // }
+}
 }
 
 
