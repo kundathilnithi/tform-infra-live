@@ -21,6 +21,7 @@ pipeline {
                     sh 'ls -la /home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod/ec2'
                     sh ' cat terragrunt.hcl'
                     sh 'pwd'
+                    sh 'cd /home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod/ec2'
                     sh 'terragrunt init'
                     
                 }
