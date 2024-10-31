@@ -23,7 +23,7 @@ pipeline {
                 sh "pwd"
                 script {
                     
-                    def terragrunt = new TerragruntPipeline(params.TERRAGRUNT_CONFIG)
+                    def terragrunt = new TerragruntPipeline()
                     terragrunt.init()
                 }
             }
@@ -32,7 +32,7 @@ pipeline {
         stage('Plan') {
             steps {
                 script {
-                    def terragrunt = new TerragruntPipeline(params.TERRAGRUNT_CONFIG)
+                    def terragrunt = new TerragruntPipeline()
                     terragrunt.plan()
                 }
             }
@@ -41,7 +41,7 @@ pipeline {
         stage('Apply') {
             steps {
                 script {
-                    def terragrunt = new TerragruntPipeline(params.TERRAGRUNT_CONFIG)
+                    def terragrunt = new TerragruntPipeline()
                     terragrunt.apply()
                 }
             }
@@ -50,7 +50,7 @@ pipeline {
         stage('Output') {
             steps {
                 script {
-                    def terragrunt = new TerragruntPipeline(params.TERRAGRUNT_CONFIG)
+                    def terragrunt = new TerragruntPipeline()
                     terragrunt.output() // Display outputs after apply
                 }
             }
