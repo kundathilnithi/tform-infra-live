@@ -2,7 +2,7 @@ pipeline {
     agent { label 'kubeagent'}
 
     environment {
-        def workspace = env.WORKSPACE
+        workspace = ${env.WORKSPACE}
         TERRAGRUNT_WORKING_DIR = 'tform-infra-live/prod/ec2' // Update with the path to your Terragrunt directory
     }
 
