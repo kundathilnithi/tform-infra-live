@@ -7,8 +7,8 @@ pipeline {
     agent { label 'kubeagent'}
 
      
-        TERRAGRUNT_WORKING_DIR = 'myec2-pipeline'  // Change this to your directory path
-    }
+        //TERRAGRUNT_WORKING_DIR = 'myec2-pipeline'  // Change this to your directory path
+    
 
    stages {
         stage('Checkout') {
