@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git clone https://github.com/kundathilnithi/tform-infra-live.git
+                git clone "https://github.com/kundathilnithi/tform-infra-live.git"
             }
         }
 
