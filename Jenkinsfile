@@ -17,7 +17,7 @@ pipeline {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
                
-                    sh 'terragrunt init'
+                    sh "terragrunt init"
                     
                 }
             }
