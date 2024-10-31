@@ -13,25 +13,27 @@ pipeline {
             }
         }
 
-        stage('Terragrunt Init') {
+        stage('Debug') {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
                     sh 'pwd'
                     sh ' ls -la'
                   
-                    sh "terragrunt init"
+                    
                     
                 }
             }
         }
 
-        stage('Terragrunt Plan') {
+    stage('Terragrunt Init') {
             steps {
-              //  dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'terragrunt plan -out=planfile.tfplan'
+                dir(TERRAGRUNT_DIR) {
+                    echo "Running Terragrunt init in ${TERRAGRUNT_DIR}"
+                  
                 }
             }
         }
+    }
 
         // stage('Approval') {
         //     steps {
