@@ -27,7 +27,7 @@ pipeline {
 
     stage('Terragrunt Init') {
             steps {
-                dir(env.WORKSPACE/TERRAGRUNT_WORKING_DIR ) {
+                dir(${env.WORKSPACE}/TERRAGRUNT_WORKING_DIR ) {
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
                     sh "pwd"
                   
