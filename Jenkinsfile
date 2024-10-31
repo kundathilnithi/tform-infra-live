@@ -16,7 +16,7 @@ pipeline {
         stage('Terragrunt Init') {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
-               
+                    sh 'cat tform-infra-live/prod/ec2/terragrunt.hcl '
                     sh "terragrunt init"
                     
                 }
