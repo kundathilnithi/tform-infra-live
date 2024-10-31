@@ -10,13 +10,15 @@ pipeline {
         TERRAGRUNT_WORKING_DIR = 'tform-infra-live'  // Change this to your directory path
     }
 
-    stages {
+   stages {
         stage('Checkout') {
             steps {
-                git clone https://github.com/kundathilnithi/tform-infra-live.git
+                sh "echo test"
             }
         }
-    }
+
+   }
+}
     //     stage('Terragrunt Init') {
     //         steps {
     //             dir(TERRAGRUNT_WORKING_DIR) {
@@ -54,5 +56,5 @@ pipeline {
     //     }
     // }
 
-}
+
 
