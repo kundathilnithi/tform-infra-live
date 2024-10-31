@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                  sh "rm -rf tform-infra-live"
+                 
                sh "git clone https://github.com/kundathilnithi/tform-infra-live.git"
             }
         }
@@ -29,33 +29,33 @@ pipeline {
             }
         }
 
-        stage('Plan') {
-            steps {
-                script {
-                    def terragrunt = new TerragruntPipeline()
-                    terragrunt.plan()
-                }
-            }
-        }
+    //     stage('Plan') {
+    //         steps {
+    //             script {
+    //                 def terragrunt = new TerragruntPipeline()
+    //                 terragrunt.plan()
+    //             }
+    //         }
+    //     }
 
-        stage('Apply') {
-            steps {
-                script {
-                    def terragrunt = new TerragruntPipeline()
-                    terragrunt.apply()
-                }
-            }
-        }
+    //     stage('Apply') {
+    //         steps {
+    //             script {
+    //                 def terragrunt = new TerragruntPipeline()
+    //                 terragrunt.apply()
+    //             }
+    //         }
+    //     }
 
-        stage('Output') {
-            steps {
-                script {
-                    def terragrunt = new TerragruntPipeline()
-                    terragrunt.output() // Display outputs after apply
-                }
-            }
-        }
-    }
+    //     stage('Output') {
+    //         steps {
+    //             script {
+    //                 def terragrunt = new TerragruntPipeline()
+    //                 terragrunt.output() // Display outputs after apply
+    //             }
+    //         }
+    //     }
+    // }
 
     post {
         success {
