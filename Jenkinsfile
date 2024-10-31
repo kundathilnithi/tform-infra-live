@@ -31,7 +31,10 @@ pipeline {
                 dir(TERRAGRUNT_WORKING_DIR ) {
                  
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
+
                     sh "pwd"
+                    sh "cd ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}"
+                    sh "terragrunt init"
                 
                   
                 }
