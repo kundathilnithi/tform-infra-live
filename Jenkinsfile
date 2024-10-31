@@ -1,69 +1,57 @@
-@Library('mylibrary') _
+// @Library('mylibrary') _
 
-import com.awsec2.TerragruntPipeline 
+// import com.awsec2.TerragruntPipeline 
 
 
 pipeline {
     agent { label 'kubeagent'}
 
-    // parameters {
-    //     string(name: 'TERRAGRUNT_CONFIG', defaultValue: 'path/to/terragrunt.hcl', description: 'Path to the Terragrunt configuration file')
-    // }
+     environment {
+        TERRAGRUNT_WORKING_DIR = 'tform-infra-live'  // Change this to your directory path
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                 
-               sh "git clone https://github.com/kundathilnithi/tform-infra-live.git"
+                git clone https://github.com/kundathilnithi/tform-infra-live.git
             }
         }
 
-        stage('Initialize') {
+        stage('Terragrunt Init') {
             steps {
-                sh "pwd"
-                script {
-                    
-                    def terragrunt = new TerragruntPipeline()
-                  
-                    terragrunt.init()
+                dir(TERRAGRUNT_WORKING_DIR) {
+                    sh 'terragrunt init'
                 }
             }
         }
 
-    //     stage('Plan') {
-    //         steps {
-    //             script {
-    //                 def terragrunt = new TerragruntPipeline()
-    //                 terragrunt.plan()
-    //             }
-    //         }
-    //     }
+        stage('Terragrunt Plan') {
+            steps {
+                dir(TERRAGRUNT_WORKING_DIR) {
+                    sh 'terragrunt plan -out=planfile.tfplan'
+                }
+            }
+        }
 
-    //     stage('Apply') {
-    //         steps {
-    //             script {
-    //                 def terragrunt = new TerragruntPipeline()
-    //                 terragrunt.apply()
-    //             }
-    //         }
-    //     }
+        stage('Approval') {
+            steps {
+                input message: "Do you want to apply the changes?", ok: "Yes, Apply"
+            }
+        }
 
-    //     stage('Output') {
-    //         steps {
-    //             script {
-    //                 def terragrunt = new TerragruntPipeline()
-    //                 terragrunt.output() // Display outputs after apply
-    //             }
-    //         }
-    //     }
+        stage('Terragrunt Apply') {
+            steps {
+                dir(TERRAGRUNT_WORKING_DIR) {
+                    sh 'terragrunt apply planfile.tfplan'
+                }
+            }
+        }
     }
 
-    // post {
-    //     success {
-    //         echo 'Deployment was successful!'
-    //     }
-    //     failure {
-    //         echo 'Deployment failed.'
-    //     }
-    // }
+    post {
+        always {
+            cleanWs()  // Cleans the workspace after completion
+        }
+    }
+}
 }
