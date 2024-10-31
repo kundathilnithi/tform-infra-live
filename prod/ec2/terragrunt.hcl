@@ -2,7 +2,7 @@
 
 terraform {
   # Deploy version v0.0.1 in prod
-  source = "git::git@github.com:kundathilnithi/tform-infra-modules.git//modules/app-instance?ref=main"
+  source = "https://github.com/kundathilnithi/tform-infra-modules.git//modules/app-instance?ref=main"
 }
 
 inputs = {
