@@ -2,7 +2,7 @@ pipeline {
     agent { label 'kubeagent'}
 
     environment {
-        TERRAGRUNT_WORKING_DIR = 'prod/ec2/' // Update with the path to your Terragrunt directory
+        TERRAGRUNT_WORKING_DIR = 'tform-infra-live/prod/ec2' // Update with the path to your Terragrunt directory
     }
 
     stages {
@@ -16,13 +16,7 @@ pipeline {
         stage('Terragrunt Init') {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'pwd'
-                
-                    sh 'ls -la /home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod/ec2'
-                    sh ' cat terragrunt.hcl'
-                    sh 'pwd'
-                    sh 'cd /home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod/ec2'
-                    sh 'terragrunt -v'
+               
                     sh 'terragrunt init'
                     
                 }
