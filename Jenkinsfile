@@ -6,9 +6,9 @@ import com.awsec2.TerragruntPipeline
 pipeline {
     agent { label 'kubeagent'}
 
-    parameters {
-        string(name: 'TERRAGRUNT_CONFIG', defaultValue: 'path/to/terragrunt.hcl', description: 'Path to the Terragrunt configuration file')
-    }
+    // parameters {
+    //     string(name: 'TERRAGRUNT_CONFIG', defaultValue: 'path/to/terragrunt.hcl', description: 'Path to the Terragrunt configuration file')
+    // }
 
     stages {
         stage('Checkout') {
@@ -24,6 +24,7 @@ pipeline {
                 script {
                     
                     def terragrunt = new TerragruntPipeline()
+                    sh "terragrunt -v"
                     terragrunt.init()
                 }
             }
