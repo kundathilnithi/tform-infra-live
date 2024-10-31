@@ -24,7 +24,7 @@ pipeline {
                 script {
                     
                     def terragrunt = new TerragruntPipeline()
-                    sh "terragrunt -v"
+                  
                     terragrunt.init()
                 }
             }
@@ -58,12 +58,12 @@ pipeline {
     //     }
     }
 
-    post {
-        success {
-            echo 'Deployment was successful!'
-        }
-        failure {
-            echo 'Deployment failed.'
-        }
-    }
+    // post {
+    //     success {
+    //         echo 'Deployment was successful!'
+    //     }
+    //     failure {
+    //         echo 'Deployment failed.'
+    //     }
+    // }
 }
