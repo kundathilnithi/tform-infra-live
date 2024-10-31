@@ -17,40 +17,40 @@ pipeline {
             }
         }
 
-        stage('Terragrunt Init') {
-            steps {
-                dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'terragrunt init'
-                }
-            }
-        }
+    //     stage('Terragrunt Init') {
+    //         steps {
+    //             dir(TERRAGRUNT_WORKING_DIR) {
+    //                 sh 'terragrunt init'
+    //             }
+    //         }
+    //     }
 
-        stage('Terragrunt Plan') {
-            steps {
-                dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'terragrunt plan -out=planfile.tfplan'
-                }
-            }
-        }
+    //     stage('Terragrunt Plan') {
+    //         steps {
+    //             dir(TERRAGRUNT_WORKING_DIR) {
+    //                 sh 'terragrunt plan -out=planfile.tfplan'
+    //             }
+    //         }
+    //     }
 
-        stage('Approval') {
-            steps {
-                input message: "Do you want to apply the changes?", ok: "Yes, Apply"
-            }
-        }
+    //     stage('Approval') {
+    //         steps {
+    //             input message: "Do you want to apply the changes?", ok: "Yes, Apply"
+    //         }
+    //     }
 
-        stage('Terragrunt Apply') {
-            steps {
-                dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'terragrunt apply planfile.tfplan'
-                }
-            }
-        }
-    }
+    //     stage('Terragrunt Apply') {
+    //         steps {
+    //             dir(TERRAGRUNT_WORKING_DIR) {
+    //                 sh 'terragrunt apply planfile.tfplan'
+    //             }
+    //         }
+    //     }
+    // }
 
-    post {
-        always {
-            cleanWs()  // Cleans the workspace after completion
-        }
-    }
+    // post {
+    //     always {
+    //         cleanWs()  // Cleans the workspace after completion
+    //     }
+    // }
 }
