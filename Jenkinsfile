@@ -16,7 +16,7 @@ pipeline {
                 git clone https://github.com/kundathilnithi/tform-infra-live.git
             }
         }
-
+    }
     //     stage('Terragrunt Init') {
     //         steps {
     //             dir(TERRAGRUNT_WORKING_DIR) {
@@ -53,6 +53,6 @@ pipeline {
     //         cleanWs()  // Cleans the workspace after completion
     //     }
     // }
-}
 
 }
+
