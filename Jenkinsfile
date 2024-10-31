@@ -17,6 +17,7 @@ pipeline {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
                     sh 'pwd'
+                    sh 'ls -ltr /home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod/ec2'
                     sh 'terragrunt init'
                     
                 }
