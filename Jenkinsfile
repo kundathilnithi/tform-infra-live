@@ -20,7 +20,9 @@ pipeline {
 
         stage('Initialize') {
             steps {
+                sh "pwd"
                 script {
+                    
                     def terragrunt = new TerragruntPipeline(params.TERRAGRUNT_CONFIG)
                     terragrunt.init()
                 }
