@@ -11,12 +11,12 @@ pipeline {
     }
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //           sh "rm -rf tform-infra-live"
-        //        sh "git clone https://github.com/kundathilnithi/tform-infra-live.git"
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                  sh "rm -rf tform-infra-live"
+               sh "git clone https://github.com/kundathilnithi/tform-infra-live.git"
+            }
+        }
 
         stage('Initialize') {
             steps {
