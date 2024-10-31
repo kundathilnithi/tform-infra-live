@@ -2,7 +2,7 @@ pipeline {
     agent { label 'kubeagent'}
 
     environment {
-        TERRAGRUNT_WORKING_DIR = 'tform-infra-live/prod/ec2/' // Update with the path to your Terragrunt directory
+        TERRAGRUNT_WORKING_DIR = 'prod/ec2/' // Update with the path to your Terragrunt directory
     }
 
     stages {
