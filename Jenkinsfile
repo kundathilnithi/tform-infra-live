@@ -19,6 +19,7 @@ pipeline {
                     sh 'pwd'
                 
                     sh 'ls -la /home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod/ec2'
+                    sh 'pwd'
                     sh 'terragrunt init'
                     
                 }
