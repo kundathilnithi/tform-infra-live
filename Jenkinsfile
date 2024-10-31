@@ -2,19 +2,21 @@ pipeline {
     agent { label 'kubeagent'}
 
     environment {
-        TERRAGRUNT_WORKING_DIR = '/home/jenkins/agent/workspace/myec2-pipeline/tform-infra-live/prod' // Update with the path to your Terragrunt directory
+        TERRAGRUNT_WORKING_DIR = 'tform-infra-live/terragrunt.hcl' // Update with the path to your Terragrunt directory
     }
 
     stages {
         stage('Checkout') {
             steps {
                sh "git clone https://github.com/kundathilnithi/tform-infra-live.git "
+               sh 'pwd'
             }
         }
 
         stage('Terragrunt Init') {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
+                    sh 'pwd'
                     sh 'terragrunt init'
                 }
             }
