@@ -13,19 +13,19 @@ pipeline {
    stages {
         stage('Checkout') {
             steps {
-                sh "echo test"
+                sh "git clone https://github.com/kundathilnithi/tform-infra-live.git"
             }
         }
 
    }
-}
-    //     stage('Terragrunt Init') {
-    //         steps {
-    //             dir(TERRAGRUNT_WORKING_DIR) {
-    //                 sh 'terragrunt init'
-    //             }
-    //         }
-    //     }
+
+        stage('Terragrunt Init') {
+            steps {
+                dir(TERRAGRUNT_WORKING_DIR) {
+                    sh 'terragrunt init'
+                }
+            }
+        }
 
     //     stage('Terragrunt Plan') {
     //         steps {
@@ -55,6 +55,6 @@ pipeline {
     //         cleanWs()  // Cleans the workspace after completion
     //     }
     // }
-
+}
 
 
