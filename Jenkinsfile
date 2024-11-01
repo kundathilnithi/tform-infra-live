@@ -59,10 +59,10 @@ pipeline {
             }
 
             steps {
-                    Integer integerValue = parameter.server_count.toInteger()
+               
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt apply -var="integerValue"-auto-approve"
+                    sh "terragrunt apply -var="parameter.server_count"-auto-approve"
 
                     }
             }
