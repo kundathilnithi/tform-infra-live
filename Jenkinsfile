@@ -18,17 +18,23 @@ pipeline {
         stage('Terragrunt Init') {
             
             steps {
-                    // withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                   
                     script {
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
                     sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
-                    sh 'terragrunt plan -out=planfile.tfplan'
+                    
                     sh 'terragrunt apply -auto-approve'
                     }
                 
             }
-        // }
+       
         } 
+
+        stage('Checkout') {
+            steps {
+             sh 'terragrunt plan -out=planfile.tfplan'
+            }
+        }
 
     }
     }
