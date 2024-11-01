@@ -2,7 +2,7 @@ pipeline {
     agent { label 'kubeagent'}
      parameters {
         choice(
-            name: 'Action',
+            name: 'action',
             choices: ['deploy', 'dryrun'],
             description: 'Select the Action'
         )
@@ -37,7 +37,11 @@ pipeline {
        
          }
 
-           stage('Terragrunt Plan') {        
+           stage('Terragrunt Plan') {   
+            when {
+                expression { params.action == 'dryrun' }
+            }
+
             steps {
                    
                     script {
