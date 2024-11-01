@@ -31,7 +31,7 @@ pipeline {
                     sh 'terragrunt plan -out=planfile.tfplan'
                 }
             }
-        }
+        
 
 
     }
