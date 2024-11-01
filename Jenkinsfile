@@ -25,6 +25,17 @@ pipeline {
             }
         }
 
+    stage('Terragrunt Plan') {
+            steps {
+              {
+                    sh 'terragrunt plan -out=planfile.tfplan'
+                }
+            }
+
+
+
+
+
     }
 
 }
