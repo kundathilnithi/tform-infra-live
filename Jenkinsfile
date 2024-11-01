@@ -1,6 +1,6 @@
 pipeline {
     agent { label 'kubeagent'}
-     parameters {
+      {
         choice(
             name: 'action',
             choices: ['deploy', 'dryrun'],
@@ -47,7 +47,7 @@ pipeline {
                    
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt plan -var="server_count=${parameters.server_count}""
+                    sh "terragrunt plan -var 'server_count=${parameters.server_count}'"
 
                     }
             }
@@ -62,7 +62,7 @@ pipeline {
                
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt apply -var="server_count=${parameters.server_count}" -auto-approve"
+                    sh "terragrunt apply var 'server_count=${parameters.server_count}' -auto-approve"
 
                     }
             }
