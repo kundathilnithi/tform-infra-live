@@ -13,7 +13,7 @@ pipeline {
 
 
     environment {
-        TF_VAR_server_count = "${parameters.server_count}"
+        TF_VAR_server_count = ${parameters.server_count}
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         TERRAGRUNT_WORKING_DIR = 'tform-infra-live/prod/ec2' // Update with the path to your Terragrunt directory
