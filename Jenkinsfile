@@ -25,7 +25,7 @@ pipeline {
                     
                   //  sh 'terragrunt apply -auto-approve'
 
-                  sh "runnning init"
+                  sh "echo runnning init"
                     }
                 
             }
@@ -37,7 +37,7 @@ pipeline {
             steps {
                    
                     script {
-                    echo "Running Terragrunt Plan"
+                    sh "echo Running Terragrunt Plan"
                  //   sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
                     
                   //  sh 'terragrunt apply -auto-approve'
