@@ -1,4 +1,4 @@
-@Library('mylibrary') _
+
 
 pipeline {
     agent { label 'kubeagent'}
@@ -29,17 +29,7 @@ pipeline {
              sh "git clone https://github.com/kundathilnithi/tform-infra-live.git "
             }
         }
-         stage('Terraform Backend Init') {
-            steps {
-
-                 terraformBackend(
-                    bucket: 'my-terraform-states',
-                    key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
-                    region: 'us-east-1'
-         
-                )
-            }
-        }
+    
 
         stage('Terragrunt Init') {
             
