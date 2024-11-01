@@ -23,7 +23,7 @@ pipeline {
                   
                 }
             }
-        }
+        
 
            stage('Terragrunt Plan') {
             steps {
