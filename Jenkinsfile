@@ -24,34 +24,11 @@ pipeline {
                 }
             }
         }
-        
-        //    stage('Terragrunt Plan') {
-        //     steps {
-        //         dir(TERRAGRUNT_WORKING_DIR) {
-        //             sh 'terragrunt plan -out=planfile.tfplan'
-        //         }
-        //     }
-        
 
-
-    
-
-        // stage('Approval') {
-        //     steps {
-        //         input message: "Approve to apply the Terragrunt plan?", ok: "Apply"
-        //     }
-        // }
-
-        // stage('Terragrunt Apply') {
-        //     steps {
-        //         dir(TERRAGRUNT_WORKING_DIR) {
-        //             sh 'terragrunt apply planfile.tfplan'
-        //         }
-        //     }
-        // }
-    }
     }
 
-
+}
+        
+      
 
     
