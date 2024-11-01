@@ -52,6 +52,21 @@ pipeline {
             }
     }
 
+       stage('Terragrunt Plan') {   
+            when {
+                expression { params.action == 'deploy' }
+            }
+
+            steps {
+                   
+                    script {
+                    sh "echo Running Terragrunt Plan"
+                    sh "terragrunt apply -auto-approve"
+
+                    }
+            }
+    }
+
 
 }
 }
