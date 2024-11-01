@@ -1,9 +1,7 @@
 pipeline {
     agent { label 'kubeagent'}
 
-     parameters {
-        booleanParam(name: 'autoApprove', defaultValue: false, description: 'Automatically run apply after generating plan?')
-    } 
+
 
     environment {
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
@@ -43,23 +41,6 @@ pipeline {
                     }
             }
     }
-
-stage('Approval') {
-           when {
-               not {
-                   equals expected: true, actual: params.autoApprove
-               }
-           }
-
-           steps {
-               script {
-                    
-                    input message: "Do you want to apply the plan?",
-                    parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
-               }
-           }
-       }
-
 
 
 }
