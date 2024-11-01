@@ -1,3 +1,5 @@
+@Library('mylibrary') _
+
 pipeline {
     agent { label 'kubeagent'}
       parameters {
@@ -13,6 +15,8 @@ pipeline {
 
 
     environment {
+        APP_NAME = 'ec2'
+        ENVIRONMENT = 'prod'
         TF_VAR_server_count = params.server_count.toInteger()
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -25,7 +29,17 @@ pipeline {
              sh "git clone https://github.com/kundathilnithi/tform-infra-live.git "
             }
         }
+         stage('Terraform Backend Init') {
+            steps {
 
+                 terraformBackend(
+                    bucket: 'my-terraform-states',
+                    key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
+                    region: 'us-east-1'
+         
+                )
+            }
+        }
 
         stage('Terragrunt Init') {
             
