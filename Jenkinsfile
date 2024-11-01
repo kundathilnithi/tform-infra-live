@@ -28,11 +28,20 @@ pipeline {
                 
             }
        
-        
+         }
 
- 
+    stage('Terragrunt Plan') {
+            
+            steps {
+                   
+                    script {
+                    echo "Running Terragrunt Plan"
+                 //   sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
+                    
+                  //  sh 'terragrunt apply -auto-approve'
+                    }
+       
 
-    }
     }
 }
 
