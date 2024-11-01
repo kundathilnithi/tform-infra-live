@@ -16,8 +16,8 @@ pipeline {
 
         stage('Terragrunt Init') {
             steps {
-                 
-                    withAWS(credentials: 'jenkins-aws-creds', region: 'us-east-1')
+                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'enkins-aws-creds']]) 
+                    #withAWS(credentials: 'jenkins-aws-creds', region: 'us-east-1')
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
                     sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
                   
