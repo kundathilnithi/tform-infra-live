@@ -2,7 +2,8 @@ pipeline {
     agent { label 'kubeagent'}
 
     environment {
-      
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
         TERRAGRUNT_WORKING_DIR = 'tform-infra-live/prod/ec2' // Update with the path to your Terragrunt directory
     }
 
@@ -17,7 +18,7 @@ pipeline {
         stage('Terragrunt Init') {
             
             steps {
-                    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+                    // withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                     script {
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
                     sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
@@ -26,13 +27,8 @@ pipeline {
                     }
                 
             }
-        }
-        }
- 
-
-
-
-
+        // }
+        } 
 
     }
     }
