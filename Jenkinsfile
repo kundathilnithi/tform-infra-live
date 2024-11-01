@@ -1,5 +1,5 @@
 pipeline {
-    agent { label: 'kubeagent'}
+    agent { label 'kubeagent'}
       {
         choice(
             name: 'action',
