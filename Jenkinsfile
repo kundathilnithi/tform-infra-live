@@ -25,12 +25,12 @@ pipeline {
             }
         }
 
-    stage('Terragrunt Plan') {
-            steps 
-              {
-                    sh 'terragrunt plan -out=planfile.tfplan'
-               }
-    }
+    // stage('Terragrunt Plan') {
+    //         steps 
+    //           {
+    //                 sh 'terragrunt plan -out=planfile.tfplan'
+    //            }
+    // }
 
 
 
