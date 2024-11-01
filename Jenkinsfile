@@ -1,6 +1,12 @@
 pipeline {
     agent { label 'kubeagent'}
-
+     parameters {
+        choice(
+            name: 'Action',
+            choices: ['deploy', 'dryrun'],
+            description: 'Select the Action'
+        )
+    }
 
 
     environment {
