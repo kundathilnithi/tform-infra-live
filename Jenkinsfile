@@ -1,13 +1,13 @@
 pipeline {
     agent { label 'kubeagent'}
-      
+      {
         choice(
             name: 'action',
             choices: ['deploy', 'dryrun'],
             description: 'Select the Action'
         )
          string(defaultValue: "2", description: 'Instance Count', name: 'server_count') ;
-    }
+    
 
 
     environment {
