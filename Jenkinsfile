@@ -28,9 +28,9 @@ pipeline {
                 
             }
        
-        } 
+        
 
-        stage('Checkout') {
+        stage('Terragrun Plan') {
             steps {
              sh 'terragrunt plan -out=planfile.tfplan'
             }
@@ -38,6 +38,7 @@ pipeline {
 
     }
     }
+}
 
         
       
