@@ -52,7 +52,7 @@ pipeline {
             }
     }
 
-       stage('Terragrunt Plan') {   
+       stage('Terragrunt Apply') {   
             when {
                 expression { params.action == 'deploy' }
             }
