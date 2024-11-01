@@ -6,6 +6,7 @@ pipeline {
             choices: ['deploy', 'dryrun'],
             description: 'Select the Action'
         )
+         string(defaultValue: "2", description: 'Instance Count', name: 'server_count') ;
     }
 
 
@@ -58,10 +59,10 @@ pipeline {
             }
 
             steps {
-                   
+                    Integer integerValue = parameter.server_count.toInteger()
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt apply -auto-approve"
+                    sh "terragrunt apply -var="integerValue"-auto-approve"
 
                     }
             }
