@@ -62,7 +62,7 @@ pipeline {
                
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt apply -var="parameter.server_count" -auto-approve"
+                    sh "terragrunt apply -var={$parameter.server_count} -auto-approve"
 
                     }
             }
