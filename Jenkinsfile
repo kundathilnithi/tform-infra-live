@@ -49,7 +49,7 @@ pipeline {
                    
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt plan "
+                    sh "terragrunt plan -var server_count=${parameters.server_count} "
 
                     }
             }
