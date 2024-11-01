@@ -14,16 +14,16 @@ pipeline {
         }
 
 
-        // stage('Terragrunt Init') {
-        //     steps {
-        //          {
+        stage('Terragrunt Init') {
+            steps {
+                 {
                  
-        //             echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-        //             sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
+                    echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
+                    sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
                   
-        //         }
-        //     }
-        // }
+                }
+            }
+        }
 
     }
 
