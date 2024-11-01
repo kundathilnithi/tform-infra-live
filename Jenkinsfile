@@ -24,13 +24,15 @@ pipeline {
                  //   sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
                     
                   //  sh 'terragrunt apply -auto-approve'
+
+                  sh "runnning init"
                     }
                 
             }
        
          }
 
-    stage('Terragrunt Plan') {
+           stage('Terragrunt Plan') {
             
             steps {
                    
