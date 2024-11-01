@@ -41,7 +41,7 @@ pipeline {
                   //  sh 'terragrunt apply -auto-approve'
                     }
        
-
+            }
     }
 }
 
