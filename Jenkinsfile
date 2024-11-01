@@ -10,34 +10,16 @@ pipeline {
         stage('Checkout') {
             steps {
              sh "git clone https://github.com/kundathilnithi/tform-infra-live.git "
-               sh 'pwd'
             }
         }
 
-        stage('Debug') {
-            steps {
-                dir(TERRAGRUNT_WORKING_DIR) {
-                    sh 'pwd'
-                    sh ' ls -la'
-                  
-                    
-                    
-                }
-            }
-        }
 
     stage('Terragrunt Init') {
             steps {
-                dir(TERRAGRUNT_WORKING_DIR ) {
+                 {
                  
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-
-                    sh "pwd"
-                    sh "cd ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}"
-                    sh"pwd"
                     sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
-                    sh "pwd"
-                
                   
                 }
             }
