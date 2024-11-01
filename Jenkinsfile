@@ -21,26 +21,21 @@ pipeline {
                    
                     script {
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-                 //   sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
-                    
-                  //  sh 'terragrunt apply -auto-approve'
+                    sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
 
-                  sh "echo runnning init"
                     }
                 
             }
        
          }
 
-           stage('Terragrunt Plan') {
-            
+           stage('Terragrunt Plan') {        
             steps {
                    
                     script {
                     sh "echo Running Terragrunt Plan"
-                 //   sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
-                    
-                  //  sh 'terragrunt apply -auto-approve'
+                   sh "terragrunt plan"
+
                     }
        
             }
