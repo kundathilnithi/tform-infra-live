@@ -6,8 +6,10 @@ pipeline {
             choices: ['deploy', 'dryrun'],
             description: 'Select the Action'
         )
+
+         parameters {
          string(defaultValue: "2", description: 'Instance Count', name: 'server_count') ;
-    
+         }
 
 
     environment {
