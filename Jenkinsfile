@@ -14,7 +14,7 @@ pipeline {
         }
 
 
-    stage('Terragrunt Init') {
+        stage('Terragrunt Init') {
             steps {
                  {
                  
@@ -24,7 +24,7 @@ pipeline {
                 }
             }
         
-
+        }
            stage('Terragrunt Plan') {
             steps {
                 dir(TERRAGRUNT_WORKING_DIR) {
