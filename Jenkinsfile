@@ -50,7 +50,7 @@ pipeline {
                    
                     script {
                     sh "echo Running Terragrunt Plan"
-                    sh "terragrunt plan -var '"server_count=${parameters.server_count}'" "
+                    sh "terragrunt plan -var "server_count=${parameters.server_count.toInteger}" "
 
                     }
             }
