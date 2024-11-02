@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Call the shared library function with configuration parameters
-                    configureTerraformBackend(
+                    terraformS3Backend.groovy(
                         bucket: 'my-terraform-state-bucket',
                         key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
                         region: 'us-west-2',
