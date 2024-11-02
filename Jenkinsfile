@@ -30,19 +30,14 @@ pipeline {
             }
         }
    
-        stage('Setup Terraform Backend') {
+          stage('Generate Configuration') {
             steps {
-                script {
-                      def APP_NAME = 'ec2'
-                      def ENVIRONMENT = 'prod'
-                    // Call the shared library function with configuration parameters
-                    terraformS3Backend(
-                        bucket: 'my-terraform-state-bucket',
-                        key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
-                        region: 'us-west-2'
-                       
-                    )
-                }
+                // Call the shared library function with parameters
+                generateConfig(
+                    appName: 'MyApp',
+                    environment: 'dev',
+                    region: 'us-west-2'
+                )
             }
         }
 
