@@ -70,20 +70,20 @@ pipeline {
     //             )
     //         }
     //     }
-           stage('Terragrunt Plan') {   
-            when {
-                expression { params.action == 'dryrun' }
-            }
+    //        stage('Terragrunt Plan') {   
+    //         when {
+    //             expression { params.action == 'dryrun' }
+    //         }
 
-            steps {
+    //         steps {
                    
-                    script {
-                    sh "echo Running Terragrunt Plan"
-                    sh "terragrunt plan  "
+    //                 script {
+    //                 sh "echo Running Terragrunt Plan"
+    //                 sh "terragrunt plan  "
 
-                    }
-            }
-    }
+    //                 }
+    //         }
+    // }
 
        stage('Terragrunt Apply') {   
             when {
