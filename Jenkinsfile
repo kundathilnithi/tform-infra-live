@@ -41,7 +41,7 @@ pipeline {
                     key: 'terraform/terraform.tfstate',
                     region: 'us-east-1'
                 )
-
+                echo "${backend}"
                 writeFile file: 'backend.tf', text: backend
             }
         }
