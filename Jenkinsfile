@@ -42,7 +42,7 @@ pipeline {
                     region: 'us-east-1'
                 )
                 echo "${backend}"
-                writeFile file: 'backend.tf', text: backend
+                writeFile file: 'backend.tf', text: backend , encoding="UTF-8"
 
                 sh "terraform init -backend-config=backend.tf"
             }
