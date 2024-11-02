@@ -30,6 +30,20 @@ pipeline {
             }
         }
    
+        stage('Setup Terraform Backend') {
+            steps {
+                script {
+                    // Call the shared library function with configuration parameters
+                    configureTerraformBackend(
+                        bucket: 'my-terraform-state-bucket',
+                        key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
+                        region: 'us-west-2',
+                        dynamodb_table: 'terraform-lock-table'
+                    )
+                }
+            }
+        }
+
 
         stage('Terragrunt Init') {
             
@@ -51,7 +65,7 @@ pipeline {
                     bucket: 'my-sai-terraform-states',
                     key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
                     region: 'us-east-1',
-                    dynamodb_table: 'terraform-lock-table'
+                    
                 )
             }
         }
