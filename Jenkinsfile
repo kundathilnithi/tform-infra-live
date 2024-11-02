@@ -43,7 +43,9 @@ pipeline {
                 )
                 echo "${backend}"
                 writeFile file: 'backend.hcl', text: backend , encoding: "UTF-8"
-
+                    sh "pwd"
+                sh "cd .terraform"
+                sh 'ls -la'
                 sh "terragrunt init --terragrunt-config backend.hcl "
 
                 sh "pwd"
