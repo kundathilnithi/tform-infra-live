@@ -36,7 +36,7 @@ pipeline {
                 terraformBackend(
                     bucket: 'my-sai-terraform-states',
                     key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
-                    region: 'us-west-2',
+                    region: 'us-east-1',
                     dynamodb_table: 'terraform-lock-table'
                 )
             }
