@@ -42,9 +42,9 @@ pipeline {
                     region: 'us-east-1'
                 )
                 echo "${backend}"
-                writeFile file: 'backend.tf', text: backend , encoding: "UTF-8"
+                writeFile file: 'backend.hcl', text: backend , encoding: "UTF-8"
 
-                sh "terragrunt init  "
+                sh "terragrunt init --terragrunt-config backend.hcl "
 
                 sh "pwd"
                 sh "cd .terraform"
