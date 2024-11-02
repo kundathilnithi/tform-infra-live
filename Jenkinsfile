@@ -34,6 +34,8 @@ pipeline {
 
                  script {
                 // Call the shared library function with parameters
+                // Log the parameters before calling the function
+            echo "Calling generateConfig with appName: 'MyApp', environment: 'dev', region: 'us-west-2'"
                 generateConfig(
                     appName: 'MyApp',
                     environment: 'dev',
