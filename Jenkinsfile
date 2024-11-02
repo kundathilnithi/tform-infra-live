@@ -15,8 +15,8 @@ pipeline {
 
 
     environment {
-        APP_NAME = 'ec2'
-        ENVIRONMENT = 'prod'
+        def APP_NAME = 'ec2'
+        def ENVIRONMENT = 'prod'
         TF_VAR_server_count = params.server_count.toInteger()
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -33,6 +33,8 @@ pipeline {
         stage('Setup Terraform Backend') {
             steps {
                 script {
+                      def APP_NAME = 'ec2'
+                      def ENVIRONMENT = 'prod'
                     // Call the shared library function with configuration parameters
                     terraformS3Backend(
                         bucket: 'my-terraform-state-bucket',
