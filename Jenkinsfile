@@ -43,6 +43,8 @@ pipeline {
                 )
                 echo "${backend}"
                 writeFile file: 'backend.tf', text: backend
+
+                sh "terraform init -backend-config=backend.tf"
             }
         }
           }
