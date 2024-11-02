@@ -37,7 +37,7 @@ pipeline {
                 // Log the parameters before calling the function
             echo "Calling generateConfig with appName: 'MyApp', environment: 'dev', region: 'us-west-2'"
                 backend = generateConfig(
-                    bucket : 'my-sai-terraform-states1',
+                    bucket : 'my-sai-terraform-states',
                     key: 'terraform.tfstate',
                     region: 'us-east-1'
                 )
