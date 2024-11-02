@@ -47,50 +47,41 @@ pipeline {
                 sh "terraform init "
 
                 sh "pwd"
+                sh "cd .terraform"
                 sh 'ls -la'
             }
         }
           }
 
 
-        // stage('Terragrunt Init') {
+        stage('Terragrunt Init') {
             
-        //     steps {
+            steps {
                    
-        //             script {
-        //             echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-        //             sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
+                    script {
+                    echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
+                    sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
 
-        //             }
+                    }
                 
-        //     }
+            }
        
-        //  }
-    // stage('Terraform Bacend Init') {
-    //         steps {
-    //             // Call the shared library function with configuration parameters
-    //             terraformS3Backend(
-    //                 bucket: 'my-sai-terraform-states',
-    //                 key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
-    //                 region: 'us-east-1',
-                    
-    //             )
-    //         }
-    //     }
-    //        stage('Terragrunt Plan') {   
-    //         when {
-    //             expression { params.action == 'dryrun' }
-    //         }
+         }
+   
+           stage('Terragrunt Plan') {   
+            when {
+                expression { params.action == 'dryrun' }
+            }
 
-    //         steps {
+            steps {
                    
-    //                 script {
-    //                 sh "echo Running Terragrunt Plan"
-    //                 sh "terragrunt plan  "
+                    script {
+                    sh "echo Running Terragrunt Plan"
+                    sh "terragrunt plan  "
 
-    //                 }
-    //         }
-    // }
+                    }
+            }
+    }
 
        stage('Terragrunt Apply') {   
             when {
