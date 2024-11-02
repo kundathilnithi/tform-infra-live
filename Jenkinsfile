@@ -36,11 +36,13 @@ pipeline {
                 // Call the shared library function with parameters
                 // Log the parameters before calling the function
             echo "Calling generateConfig with appName: 'MyApp', environment: 'dev', region: 'us-west-2'"
-                generateConfig(
+                backend = generateConfig(
                     bucket : 'my-sai-terraform-states',
                     key: 'terraform/terraform.tfstate',
                     region: 'us-east-1'
                 )
+
+                writeFile file: 'backend.tf', text: backend
             }
         }
           }
