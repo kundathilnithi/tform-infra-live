@@ -62,7 +62,7 @@ pipeline {
                    
                     script {
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-                    sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
+                    sh "terragrunt init -auto-approve --terragrunt-non-interactive --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
 
                     }
                 
