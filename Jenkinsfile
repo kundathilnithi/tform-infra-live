@@ -29,13 +29,11 @@ pipeline {
             }
         }
    
-          stage('Generate Configuration') {
+          stage('Generate Backend Configuration') {
             steps {
 
-                 script {
-
-                echo "Calling generateConfig with appName: 'MyApp', environment: 'dev', region: 'us-west-2'"
-                backend = generateConfig(
+                 script {  
+                    backend = generateConfig(
                     bucket : 'my-sai-terraform-states',
                     key: 'ec2/prod/terraform.tfstate',
                     region: 'us-east-1'
@@ -53,9 +51,7 @@ pipeline {
             steps {
                    
                     script {
-                    echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
                     sh "terragrunt  init   --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
-
                     }
                 
             }
