@@ -33,24 +33,16 @@ pipeline {
             steps {
 
                  script {
-                // Call the shared library function with parameters
-                // Log the parameters before calling the function
-            echo "Calling generateConfig with appName: 'MyApp', environment: 'dev', region: 'us-west-2'"
+
+                echo "Calling generateConfig with appName: 'MyApp', environment: 'dev', region: 'us-west-2'"
                 backend = generateConfig(
                     bucket : 'my-sai-terraform-states',
-                    key: 'test/terraform.tfstate',
+                    key: 'ec2/prod/terraform.tfstate',
                     region: 'us-east-1'
                 )
-                echo "${backend}"
-                writeFile file: 'backend.hcl', text: backend , encoding: "UTF-8"
-                    sh "pwd"
-        
-                sh 'ls -la'
-                sh "terragrunt  init --terragrunt-config ${env.WORKSPACE}/backend.hcl"
-                
-                sh "pwd"
+                writeFile file: 'backend.hcl', text: backend 
+                sh "terragrunt  init --terragrunt-config ${env.WORKSPACE}/backend.hcl"                
 
-                sh 'ls -la'
             }
         }
           }
