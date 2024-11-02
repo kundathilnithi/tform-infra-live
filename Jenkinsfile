@@ -110,7 +110,7 @@ pipeline {
                
                     script {
                     sh "echo Running Terragrunt Destroy"
-                    sh "terragrunt destroy-all "
+                    sh "terragrunt  run-all destroy -auto-approve "
 
                     }
             }
