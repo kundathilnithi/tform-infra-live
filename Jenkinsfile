@@ -5,7 +5,7 @@ pipeline {
       parameters {
         choice(
             name: 'action',
-            choices: ['deploy', 'dryrun'],
+            choices: ['deploy', 'dryrun','destroy'],
             description: 'Select the Action'
         )
 
@@ -95,6 +95,22 @@ pipeline {
                     script {
                     sh "echo Running Terragrunt Plan"
                     sh "terragrunt apply  -auto-approve"
+
+                    }
+            }
+    }
+
+
+      stage('Terragrunt Destroy') {   
+            when {
+                expression { params.action == 'destroy' }
+            }
+
+            steps {
+               
+                    script {
+                    sh "echo Running Terragrunt Destroy"
+                    sh "terragrunt destroy-all "
 
                     }
             }
