@@ -44,7 +44,7 @@ pipeline {
                 echo "${backend}"
                 writeFile file: 'backend.tf', text: backend , encoding: "UTF-8"
 
-                sh "terraform init "
+                sh "terragrunt init  "
 
                 sh "pwd"
                 sh "cd .terraform"
