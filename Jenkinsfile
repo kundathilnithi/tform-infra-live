@@ -15,8 +15,7 @@ pipeline {
 
 
     environment {
-        def APP_NAME = 'ec2'
-        def ENVIRONMENT = 'prod'
+
         TF_VAR_server_count = params.server_count.toInteger()
         AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
         AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
@@ -32,6 +31,8 @@ pipeline {
    
           stage('Generate Configuration') {
             steps {
+
+                 script {
                 // Call the shared library function with parameters
                 generateConfig(
                     appName: 'MyApp',
@@ -40,6 +41,7 @@ pipeline {
                 )
             }
         }
+          }
 
 
         stage('Terragrunt Init') {
