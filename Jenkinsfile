@@ -59,17 +59,17 @@ pipeline {
             }
        
          }
-    stage('Terraform Bacend Init') {
-            steps {
-                // Call the shared library function with configuration parameters
-                terraformS3Backend(
-                    bucket: 'my-sai-terraform-states',
-                    key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
-                    region: 'us-east-1',
+    // stage('Terraform Bacend Init') {
+    //         steps {
+    //             // Call the shared library function with configuration parameters
+    //             terraformS3Backend(
+    //                 bucket: 'my-sai-terraform-states',
+    //                 key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
+    //                 region: 'us-east-1',
                     
-                )
-            }
-        }
+    //             )
+    //         }
+    //     }
            stage('Terragrunt Plan') {   
             when {
                 expression { params.action == 'dryrun' }
