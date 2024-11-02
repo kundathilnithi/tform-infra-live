@@ -1,5 +1,5 @@
 
-
+@Library('mylibrary') _
 pipeline {
     agent { label 'kubeagent'}
       parameters {
@@ -30,6 +30,17 @@ pipeline {
             }
         }
     
+           stage('Terraform Backend Init') {
+            steps {
+                // Call the shared library function with specific configuration
+                terraformBackend(
+                    bucket: 'my-sai-terraform-states',
+                    key: "${APP_NAME}/${ENVIRONMENT}/terraform.tfstate",
+                    region: 'us-west-2',
+                    dynamodb_table: 'terraform-lock-table'
+                )
+            }
+        }
 
         stage('Terragrunt Init') {
             
