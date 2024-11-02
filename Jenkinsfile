@@ -46,19 +46,19 @@ pipeline {
           }
 
 
-        stage('Terragrunt Init') {
+        // stage('Terragrunt Init') {
             
-            steps {
+        //     steps {
                    
-                    script {
-                    echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-                    sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
+        //             script {
+        //             echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
+        //             sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
 
-                    }
+        //             }
                 
-            }
+        //     }
        
-         }
+        //  }
     // stage('Terraform Bacend Init') {
     //         steps {
     //             // Call the shared library function with configuration parameters
