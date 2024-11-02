@@ -46,8 +46,8 @@ pipeline {
                     sh "pwd"
         
                 sh 'ls -la'
-                sh "terragrunt init --terragrunt-config backend.hcl "
-
+                sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/backend.hcl"
+                
                 sh "pwd"
 
                 sh 'ls -la'
