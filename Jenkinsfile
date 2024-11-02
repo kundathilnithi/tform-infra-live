@@ -46,7 +46,7 @@ pipeline {
                     sh "pwd"
         
                 sh 'ls -la'
-                sh "terragrunt init --terragrunt-config ${env.WORKSPACE}/backend.hcl"
+                sh "terragrunt run-all init --terragrunt-config ${env.WORKSPACE}/backend.hcl"
                 
                 sh "pwd"
 
@@ -62,7 +62,7 @@ pipeline {
                    
                     script {
                     echo "Running Terragrunt init in ${TERRAGRUNT_WORKING_DIR}"
-                    sh "terragrunt run-all init   --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
+                    sh "terragrunt  init   --terragrunt-config ${env.WORKSPACE}/${TERRAGRUNT_WORKING_DIR}/terragrunt.hcl"
 
                     }
                 
